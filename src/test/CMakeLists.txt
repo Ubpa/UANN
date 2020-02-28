@@ -1,3 +1,3 @@
 Ubpa_GetTargetName(ann "${CMAKE_CURRENT_SOURCE_DIR}/../ann")
-add_definitions(-DANN_NO_RANDOM)
+add_definitions(-DANN_NO_RANDOM -DUSE_ANN_DLL)
 Ubpa_AddTarget(MODE "EXE" LIBS ${ann})
