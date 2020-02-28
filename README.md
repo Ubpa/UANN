@@ -17,5 +17,5 @@ ANN (Approximate Nearest Neighbors) library, ported to CMake
 
 ### ann2fig
 
-本程序可以将 test 的 dump 文件转换成 fix 图像文件，然而 fix 图像文件需要在 xfix 软件才能打开，在 linux 上可使用，在 window 上安装十分不易（并且作者直说明能最高支持 windows XP）。故不研究，有兴趣的自行尝试。
+本程序可以将 test 的 dump 文件转换成 fig 图像文件，然而 fix 图像文件需要用 [xfig 软件](https://www.xfig.org/) 才能打开，在 linux 上可使用，[在 window 上安装](http://www.gohappycup.com/personal/latex/xfig.html) 十分不易（并且作者直说明能最高支持 Windows XP）。故不研究，有兴趣的自行尝试。
 
