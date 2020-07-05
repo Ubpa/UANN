@@ -1,3 +1,6 @@
-Ubpa_GetTargetName(ann "${CMAKE_CURRENT_SOURCE_DIR}/../ann")
-add_definitions(-DUSE_ANN_DLL)
-Ubpa_AddTarget(MODE "EXE" LIBS ${ann})
+Ubpa_GetTargetName(ann "${PROJECT_SOURCE_DIR}/src/ann")
+Ubpa_AddTarget(
+  TEST
+  MODE EXE
+  LIB ${ann}
+)

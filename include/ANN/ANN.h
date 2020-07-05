@@ -59,30 +59,30 @@
 #ifndef ANN_H
 #define ANN_H
 
-#if defined(WIN32) && defined(USE_ANN_DLL)
+#if defined(WIN32) && defined(Ubpa_AsDynamic_ANN)
   //----------------------------------------------------------------------
   // For Microsoft Visual C++, externally accessible symbols must be
-  // explicitly indicated with DLL_API, which is somewhat like "extern."
+  // explicitly indicated with DECLSPEC_ANN, which is somewhat like "extern."
   //
   // The following ifdef block is the standard way of creating macros
   // which make exporting from a DLL simpler. All files within this DLL
   // are compiled with the DLL_EXPORTS preprocessor symbol defined on the
   // command line. In contrast, projects that use (or import) the DLL
   // objects do not define the DLL_EXPORTS symbol. This way any other
-  // project whose source files include this file see DLL_API functions as
+  // project whose source files include this file see DECLSPEC_ANN functions as
   // being imported from a DLL, wheras this DLL sees symbols defined with
   // this macro as being exported.
   //----------------------------------------------------------------------
-  #ifdef DLL_EXPORTS
-	 #define DLL_API __declspec(dllexport)
+  #ifdef Ubpa_EXPORT_ANN
+	 #define DECLSPEC_ANN __declspec(dllexport)
   #else
-	#define DLL_API __declspec(dllimport)
+	#define DECLSPEC_ANN __declspec(dllimport)
   #endif
   //----------------------------------------------------------------------
-  // DLL_API is ignored for all other systems
+  // DECLSPEC_ANN is ignored for all other systems
   //----------------------------------------------------------------------
 #else
-  #define DLL_API
+  #define DECLSPEC_ANN
 #endif
 
 //----------------------------------------------------------------------
@@ -414,26 +414,26 @@ typedef ANNidx*   ANNidxArray;		// an array of point indices
 //				allocated copy.
 //----------------------------------------------------------------------
    
-DLL_API ANNdist annDist(
+DECLSPEC_ANN ANNdist annDist(
 	int				dim,		// dimension of space
 	ANNpoint		p,			// points
 	ANNpoint		q);
 
-DLL_API ANNpoint annAllocPt(
+DECLSPEC_ANN ANNpoint annAllocPt(
 	int				dim,		// dimension
 	ANNcoord		c = 0);		// coordinate value (all equal)
 
-DLL_API ANNpointArray annAllocPts(
+DECLSPEC_ANN ANNpointArray annAllocPts(
 	int				n,			// number of points
 	int				dim);		// dimension
 
-DLL_API void annDeallocPt(
+DECLSPEC_ANN void annDeallocPt(
 	ANNpoint		&p);		// deallocate 1 point
    
-DLL_API void annDeallocPts(
+DECLSPEC_ANN void annDeallocPts(
 	ANNpointArray	&pa);		// point array
 
-DLL_API ANNpoint annCopyPt(
+DECLSPEC_ANN ANNpoint annCopyPt(
 	int				dim,		// dimension
 	ANNpoint		source);	// point to copy
 
@@ -488,7 +488,7 @@ DLL_API ANNpoint annCopyPt(
 //		by itself.
 //----------------------------------------------------------------------
 
-class DLL_API ANNpointSet {
+class DECLSPEC_ANN ANNpointSet {
 public:
 	virtual ~ANNpointSet() {}			// virtual distructor
 
@@ -535,7 +535,7 @@ public:
 //		performed by a simple linear scan of all the points.
 //----------------------------------------------------------------------
 
-class DLL_API ANNbruteForce: public ANNpointSet {
+class DECLSPEC_ANN ANNbruteForce: public ANNpointSet {
 	int				dim;				// dimension
 	int				n_pts;				// number of points
 	ANNpointArray	pts;				// point array
@@ -702,7 +702,7 @@ class ANNkdStats;				// stats on kd-tree
 class ANNkd_node;				// generic node in a kd-tree
 typedef ANNkd_node*	ANNkd_ptr;	// pointer to a kd-tree node
 
-class DLL_API ANNkd_tree: public ANNpointSet {
+class DECLSPEC_ANN ANNkd_tree: public ANNpointSet {
 protected:
 	int				dim;				// dimension of space
 	int				n_pts;				// number of points in tree
@@ -794,7 +794,7 @@ public:
 //		densely clustered that this is really needed.
 //----------------------------------------------------------------------
 
-class DLL_API ANNbd_tree: public ANNkd_tree {
+class DECLSPEC_ANN ANNbd_tree: public ANNkd_tree {
 public:
 	ANNbd_tree(							// build skeleton tree
 		int				n,				// number of points
@@ -822,9 +822,9 @@ public:
 //						It clears up a minor memory leak.
 //----------------------------------------------------------------------
 
-DLL_API void annMaxPtsVisit(	// max. pts to visit in search
+DECLSPEC_ANN void annMaxPtsVisit(	// max. pts to visit in search
 	int				maxPts);	// the limit
 
-DLL_API void annClose();		// called to end use of ANN
+DECLSPEC_ANN void annClose();		// called to end use of ANN
 
 #endif
